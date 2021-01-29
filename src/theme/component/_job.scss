@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+
+@mixin job-color($config-or-theme) {
+  $config: mat-get-color-config($config-or-theme);
+  $foreground: map-get($config, foreground);
+  $background: map-get($config, background);
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+  $warn: map-get($config, warn);
+
+  .sidebar {
+    background-color: mat-color($background, background);
+  }
+
+  .result {
+
+    .result-total {
+      color: mat-color($primary, text);
+    }
+  }
+
+  .search-form-field {
+    .mat-icon {
+      color: mat-color($primary);
+    }
+  }
+
+  .job-list {
+    .item {
+      background-color: mat-color($background, card);
+
+      .wage {
+        color: mat-color($primary);
+      }
+
+      .mini {
+        mat-chip {
+          background-color: mat-color($primary, 50);
+          color: mat-color($primary);
+        }
+      }
+    }
+  }
+}

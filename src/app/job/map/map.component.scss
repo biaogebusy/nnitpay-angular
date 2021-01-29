@@ -1,15 +1,9 @@
 @import '../../../theme/variable/variable.scss';
-$light: map-get($map: $color-theme, $key: light);
 
 :host ::ng-deep {
-  .amap-container {
-    box-shadow: 0 4px 20px 2px rgba(0, 0, 0, 0.07);
-  }
 
   .mark-card {
-    background-color: map-get($map: $light, $key: bg);
     padding: $spacer / 4;
-    box-shadow: 0 4px 20px 2px rgba(0, 0, 0, 0.07);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,12 +11,45 @@ $light: map-get($map: $color-theme, $key: light);
     white-space: normal;
     word-break: keep-all;
     min-width: 200px;
+    position: relative;
+    border-radius: 6px;
 
     .media {
 
       img {
         width: 6.8rem;
         height: auto;
+      }
+    }
+
+    .arrow {
+      bottom: -11px;
+      left: 50%;
+      border-width: 11px;
+      margin-left: -11px;
+      border-top-color: #999;
+      border-top-color: rgba(0, 0, 0, .25);
+      border-bottom-width: 0;
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+
+      &:after {
+        bottom: 1px;
+        margin-left: -10px;
+        content: " ";
+        border-top-color: #fff;
+        border-bottom-width: 0;
+        border-width: 10px;
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
       }
     }
 

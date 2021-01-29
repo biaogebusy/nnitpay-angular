@@ -1,60 +1,25 @@
 @import '../../../theme/variable/variable.scss';
-$dark: map-get($map: $color-theme, $key: dark);
 
 .footer {
   position: relative;
-}
-
-.dark-theme {
-  background-color: map-get($map: $dark, $key: bg);
 
   a {
 
     &:hover,
     &:focus {
       text-decoration: none;
-      color: rgba($text-color, .8)
     }
-  }
-
-  .footer-bottom {
-    background-color: darken($color: map-get($dark, bg), $amount: 3%);
   }
 }
 
 :host ::ng-deep {
-  .mat-list-item-content {
-    color: $text-color;
-  }
 
   .mat-list-item-with-avatar {
     height: 40px !important;
   }
 
-
-  .mat-expansion-panel {
-    background-color: transparent;
-    color: $text-color !important;
-  }
-
   .mat-expansion-panel-header {
     border-bottom: 1px solid;
     border-radius: 0;
-  }
-
-  .mat-expansion-panel-header-title {
-    color: $text-color !important;
-  }
-
-  .mat-expansion-panel:not([class*=mat-elevation-z]) {
-    box-shadow: none !important;
-  }
-
-  .mat-expansion-indicator::after {
-    color: map-get($map: $app-color, $key: 50);
-  }
-
-  .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
-    background-color: transparent !important;
   }
 }

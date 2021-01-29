@@ -1,47 +1,17 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { IUser } from '../../../mobx/user/IUser';
-import { UserState } from '../../../mobx/user/UserState';
-import { UtilitiesService } from '../../../service/utilities.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { ScreenState } from '../../../mobx/screen/ScreenState';
-import { Subject } from 'rxjs';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit, OnDestroy {
+export class MenuComponent implements OnInit {
   isOpened = false;
   @Input() isDrawer: boolean;
-  constructor(
-    public userState: UserState,
-    public utilities: UtilitiesService,
-    private router: Router,
-    public screen: ScreenState
-  ) {}
 
-  ngOnInit(): void {
-    this.userState.user$.subscribe((user) => {
-      if (!user.authenticated) {
-        this.router.navigate(['/login']);
-      }
-    });
-  }
+  constructor(public screen: ScreenState) {}
 
-  logout(): void {
-    this.userState.logout();
-  }
-
-  ngOnDestroy(): void {
-    this.userState.user$.unsubscribe();
-  }
+  ngOnInit(): void {}
 
   onToggle(): void {
     this.isOpened = !this.isOpened;

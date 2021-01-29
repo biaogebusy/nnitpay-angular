@@ -1,6 +1,5 @@
 @import '/src/theme/variable/variable.scss';
-$dark: map-get($map: $color-theme, $key: dark);
-$shadow: map-get($map: $color-theme, $key: shadow);
+@import '~@angular/material/theming';
 
 .job-list {
 
@@ -15,7 +14,6 @@ $shadow: map-get($map: $color-theme, $key: shadow);
 
     .position {
       font-size: 1.6rem;
-      color: map-get($dark, text)
     }
 
     @media #{$xs} {
@@ -34,8 +32,7 @@ $shadow: map-get($map: $color-theme, $key: shadow);
 }
 
 .result {
-  font-size: 2.2rem;
-  color: map-get($dark, text);
+  font-size: 1.6rem;
 
   @media #{$xs} {
     font-size: 1.6rem;
@@ -60,16 +57,14 @@ $shadow: map-get($map: $color-theme, $key: shadow);
 }
 
 .wage {
-  color: $primary;
   font-size: 1.6rem;
 }
 
 .mini {
   mat-chip {
     font-size: 12px;
-    padding: 3px 10px;
-    min-height: 24px;
-    color: map-get($map: $dark, $key: text);
+    padding: 0px 6px;
+    min-height: 20px;
   }
 
   &.primary {

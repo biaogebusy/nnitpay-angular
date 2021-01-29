@@ -1,76 +1,65 @@
-<header *ngIf="!screen.eq('xs')" class="header bg-light" #header>
+<header *ngIf="!screen.eq('xs')" class="header" #header>
   <div class="container">
     <div class="header-container p-xs" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="header-left">
-        <a class="logo mat-h2 text-primary" href="#">NNITPAY</a>
+        <a class="logo mat-h2" href="#">NNITPAY</a>
       </div>
       <div class="header-right" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3.4rem">
         <div class="mian-menu">
           <div class="main-menu" fxLayout="row" fxLayoutGap="3.4rem">
             <div class="item">
-              <a class="text-base bold" href="#">职位</a>
+              <a class="bold" href="#">职位</a>
             </div>
             <div class="item">
-              <a class="text-base bold" [routerLink]="['/articles']">文章</a>
+              <a class="bold" [routerLink]="['/articles']">文章</a>
             </div>
             <div class="item">
-              <a class="text-base bold" href="#">关于我们</a>
+              <a class="bold" href="#">关于我们</a>
             </div>
           </div>
         </div>
         <div class="action">
-          <button mat-raised-button color="primary">
+          <button color="primary" mat-raised-button>
             发布职位
           </button>
         </div>
-        <div class="user" *ngIf="userState.anthenticated">
-          <button mat-mini-fab color="primary" mat-button [matMenuTriggerFor]="menu">
-            <h3 class="name">{{utilities.getIndexTitle(userState?.currentUser?.display_name || 'N')}}</h3>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              <mat-icon>email</mat-icon>
-              {{userState.currentUser?.mail}}
-            </button>
-            <button mat-menu-item (click)="logout()">
-              <mat-icon>exit_to_app</mat-icon>
-              退出
-            </button>
-          </mat-menu>
-        </div>
+        <app-switch-theme></app-switch-theme>
+        <app-user-menu></app-user-menu>
       </div>
     </div>
   </div>
   <mat-divider></mat-divider>
 </header>
-<mat-toolbar color="primary" *ngIf="screen.eq('xs')">
-  <button mat-icon-button (click)="onToggle()" aria-label="menu icon">
-    <mat-icon *ngIf="!isDrawer">menu</mat-icon>
-    <mat-icon *ngIf="isDrawer">close</mat-icon>
-  </button>
-  <span>NNITPAY CMS API DEMO</span>
-  <span class="spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>search</mat-icon>
-  </button>
-</mat-toolbar>
+<div class="drawer">
+  <mat-toolbar *ngIf="screen.eq('xs')">
+    <button mat-icon-button (click)="onToggle()" aria-label="menu icon">
+      <mat-icon *ngIf="!isDrawer">menu</mat-icon>
+      <mat-icon *ngIf="isDrawer">close</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <span>JSONAPI DEMO</span>
+    <span class="spacer"></span>
+    <app-switch-theme></app-switch-theme>
+    <app-user-menu></app-user-menu>
+  </mat-toolbar>
 
-<mat-list *ngIf="screen.eq('xs') && isDrawer">
-  <mat-list-item (click)="onToggle()">
-    <mat-icon class="text-primary" mat-list-icon>near_me</mat-icon>
-    <div mat-line><a [routerLink]="['/home']">工作机会</a></div>
-    <div mat-line>本月内推简历 <span class="text-primary">6</span> 份</div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item (click)="onToggle()">
-    <mat-icon class="text-primary" mat-list-icon>favorite_border</mat-icon>
-    <div mat-line><a [routerLink]="['/articles']">文章</a></div>
-    <div mat-line>本周原创文章 <span class="text-primary">6</span> 篇</div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item (click)="onToggle()">
-    <mat-icon class="text-primary" mat-list-icon>person</mat-icon>
-    <div mat-line>关于我们</div>
-    <div mat-line>内推简历，致力于开源。</div>
-  </mat-list-item>
-</mat-list>
+  <mat-list *ngIf="screen.eq('xs') && isDrawer">
+    <mat-list-item (click)="onToggle()">
+      <mat-icon mat-list-icon>near_me</mat-icon>
+      <div mat-line><a [routerLink]="['/home']">工作机会</a></div>
+      <div mat-line>本月内推简历 <span class="total">6</span> 份</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item (click)="onToggle()">
+      <mat-icon mat-list-icon>favorite_border</mat-icon>
+      <div mat-line><a [routerLink]="['/articles']">文章</a></div>
+      <div mat-line>本周原创文章 <span class="total">6</span> 篇</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item (click)="onToggle()">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <div mat-line><a [routerLink]="['/home']">关于我们</a></div>
+      <div mat-line>内推简历，致力于开源。</div>
+    </mat-list-item>
+  </mat-list>
+</div>
