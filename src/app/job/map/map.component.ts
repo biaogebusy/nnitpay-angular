@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AmapService } from '../../service/amap.service';
 import { AMapState } from '../../mobx/amap/AMapState';
 import { ThemeState } from '../../mobx/screen/ThemeState';
@@ -7,7 +7,7 @@ import { ThemeState } from '../../mobx/screen/ThemeState';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnInit {
   @Input() content: any;
   @Input() relation: any;
   @Input() AMap: any;
@@ -18,7 +18,7 @@ export class MapComponent implements OnInit, OnDestroy {
     private amapService: AmapService,
     private amapState: AMapState,
     private themeState: ThemeState
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     const themeStyle = this.themeState.theme;
@@ -32,8 +32,9 @@ export class MapComponent implements OnInit, OnDestroy {
     });
     this.getMarkers();
     this.onMarkers();
-    this.themeState.switchChange$.subscribe(theme => {
-      const newMapStyle = (theme === 'light-theme' ? mapStyle.light : mapStyle.dark);
+    this.themeState.switchChange$.subscribe((theme) => {
+      const newMapStyle =
+        theme === 'light-theme' ? mapStyle.light : mapStyle.dark;
       this.map.setMapStyle(newMapStyle);
     });
   }
@@ -41,23 +42,22 @@ export class MapComponent implements OnInit, OnDestroy {
   getMarkers(): void {
     this.amapState.position$.subscribe((res) => {
       this.markers = this.content.map((marker: any) => {
+        const company = marker.relationships.company;
+        const attr = marker.attributes;
         const obj = {
           logo: this.relation[
-            this.relation[marker.relationships.company.data.id].relationships
-              .logo.data.id
+            this.relation[company.data.id].relationships.logo.data.id
           ].attributes.uri.url,
-          company: this.relation[marker.relationships.company.data.id]
-            .attributes.title,
-          title: marker.attributes.title,
+          company: this.relation[company.data.id].attributes.title,
+          title: attr.title,
           salary: {
-            from: marker.attributes.salary.from,
-            to: marker.attributes.salary.to,
+            from: attr.salary.from,
+            to: attr.salary.to,
           },
         };
         return new this.AMap.Marker({
           content: this.markerTem(obj),
-          position: this.relation[marker.relationships.company.data.id]
-            .position,
+          position: this.relation[company.data.id].position,
           offset: new this.AMap.Pixel(-100, -150),
           title: marker.attributes.title,
         });
@@ -90,9 +90,5 @@ export class MapComponent implements OnInit, OnDestroy {
         this.relation[marker.relationships.company.data.id].position
       );
     });
-  }
-
-  ngOnDestroy(): void {
-    this.map.destroy();
   }
 }

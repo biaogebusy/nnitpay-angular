@@ -1,5 +1,8 @@
 <div class="footer">
   <div class="container">
+    <app-bg [classes]="['bg-fill-width','footer-wave']">
+      <mat-icon class="wave" svgIcon="wave"></mat-icon>
+    </app-bg>
     <div *ngIf="branding.content?.footer?.mainMenu && !screen.eq('xs')" class="footer-main-menu m-bottom p-y-sm"
       fxLayout.xs="column" fxLayoutAlign="space-between start">
       <mat-list *ngFor="let menu of branding.content.footer.mainMenu" role="list">
@@ -8,13 +11,14 @@
         <!-- TODO： 分出common item 和 popup  -->
         <mat-list-item *ngFor="let subMenu of menu.child; index as i" role="listitem" [matMenuTriggerFor]="popup">
           <mat-icon mat-list-icon svgIcon="{{subMenu.icon}}"></mat-icon>
-          <a *ngIf="subMenu.link" [href]="subMenu.link.href" target="{{subMenu.link?.target}}">{{subMenu.label}}</a>
-          <span *ngIf="!subMenu.link">{{subMenu.label}}</span>
+          <app-link *ngIf="subMenu.link; else span" [content]="subMenu"></app-link>
+          <ng-template #span>
+            <span>{{subMenu.label}}</span>
+          </ng-template>
           <mat-menu #popup="matMenu" yPosition="above">
             <span [innerHTML]="subMenu.popup"></span>
           </mat-menu>
         </mat-list-item>
-
       </mat-list>
     </div>
     <div class="mobile p-y-sm" *ngIf="branding.content?.footer?.mobileMenu && screen.eq('xs')">
@@ -28,7 +32,7 @@
           </mat-expansion-panel-header>
           <mat-list>
             <mat-list-item *ngFor="let subMenu of menu.child">
-              <a *ngIf="subMenu.link" [href]="subMenu.link.href" target="{{subMenu.link?.target}}">{{subMenu.label}}</a>
+              <app-link *ngIf="subMenu.link" [content]="subMenu"></app-link>
             </mat-list-item>
           </mat-list>
         </mat-expansion-panel>

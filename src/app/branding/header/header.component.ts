@@ -4,7 +4,6 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
-  OnDestroy,
 } from '@angular/core';
 import { ScreenService } from '../../service/screen.service';
 import { ScreenState } from '../../mobx/screen/ScreenState';
@@ -13,7 +12,7 @@ import { ScreenState } from '../../mobx/screen/ScreenState';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HeaderComponent implements OnInit, AfterViewInit {
   sticky = false;
 
   @ViewChild('menu', { read: ElementRef }) menu: ElementRef;
@@ -30,9 +29,5 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.menu.nativeElement
       );
     });
-  }
-
-  ngOnDestroy(): void {
-    this.screenState.scroll$.unsubscribe();
   }
 }

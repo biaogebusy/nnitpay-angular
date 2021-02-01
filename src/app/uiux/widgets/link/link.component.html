@@ -1,0 +1,6 @@
+<ng-container *ngIf="content">
+  <!-- TODO: Position address -->
+  <a class="link" [ngClass]="content?.classes" [href]="content?.link?.href"
+    [target]="content?.link?.target">{{content?.label}}</a>
+  <!-- if Absolute address -->
+</ng-container>

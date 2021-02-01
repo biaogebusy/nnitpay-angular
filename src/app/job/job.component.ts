@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { NodeService } from '../service/node.service';
-import { Subject } from 'rxjs';
 import { IChipList } from './IJob';
-import {isArray, keyBy } from 'lodash-es';
-import * as AMapLoader from '@amap/amap-jsapi-loader';
+import { isArray, keyBy } from 'lodash-es';
 import { AmapService } from '../service/amap.service';
 import { AMapState } from '../mobx/amap/AMapState';
+import { TitleService } from '../service/title.service';
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
@@ -27,13 +26,15 @@ export class JobComponent implements OnInit {
     private apiService: ApiService,
     private nodeService: NodeService,
     private amapService: AmapService,
-    public amapState: AMapState
+    public amapState: AMapState,
+    private titleService: TitleService
   ) {
     this.nodes = [];
   }
 
   ngOnInit(): void {
     this.getJobsNodes();
+    this.titleService.setTitle('内推职位列表');
   }
 
   getJobsNodes(): void {
@@ -112,7 +113,7 @@ export class JobComponent implements OnInit {
       .slice(0, 4);
   }
 
-  onSelected(item: any) {
+  onSelected(item: any): void {
     this.amapState.markers$.next(item);
   }
 }

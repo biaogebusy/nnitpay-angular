@@ -1,14 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserState } from '../../mobx/user/UserState';
 import { ApiService } from '../../service/api.service';
+import { ScreenState } from '../../mobx/screen/ScreenState';
+import { TitleService } from '../../service/title.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   hide = true;
   userForm: FormGroup;
 
@@ -16,10 +18,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     public userState: UserState,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    public screenState: ScreenState,
+    private titleService: TitleService
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('欢迎登录！');
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       pass: ['', Validators.required],
@@ -48,9 +53,5 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.userForm.value.pass,
       this.apiService.localUserKey
     );
-  }
-
-  ngOnDestroy(): void {
-    this.userState.user$.unsubscribe();
   }
 }
