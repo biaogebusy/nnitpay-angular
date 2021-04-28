@@ -1,0 +1,208 @@
+{
+  "introPage": {
+    "showIntroPage": false,
+    "startButtonText": "Start Quiz",
+    "introduction": ""
+  },
+  "progressType": "dots",
+  "passPercentage": 50,
+  "questions": [{
+    "params": {
+      "media": {
+        "type": {
+          "params": {
+            "contentName": "Image"
+          },
+          "library": "H5P.Image 1.1",
+          "subContentId": "9be0cb81-17bf-4398-9ab1-aa4365d0f028",
+          "metadata": {
+            "contentType": "Image",
+            "license": "U",
+            "title": "Untitled Image",
+            "authors": [],
+            "changes": [],
+            "extraTitle": "Untitled Image"
+          }
+        },
+        "disableImageZooming": false
+      },
+      "answers": [{
+        "correct": true,
+        "tipsAndFeedback": {
+          "tip": "",
+          "chosenFeedback": "",
+          "notChosenFeedback": ""
+        },
+        "text": "<div>Right</div>\n"
+      }, {
+        "correct": false,
+        "tipsAndFeedback": {
+          "tip": "",
+          "chosenFeedback": "",
+          "notChosenFeedback": ""
+        },
+        "text": "<div>Wrong</div>\n"
+      }],
+      "overallFeedback": [{
+        "from": 0,
+        "to": 100
+      }],
+      "behaviour": {
+        "enableRetry": false,
+        "enableSolutionsButton": false,
+        "enableCheckButton": true,
+        "type": "auto",
+        "singlePoint": false,
+        "randomAnswers": true,
+        "showSolutionsRequiresInput": true,
+        "confirmCheckDialog": false,
+        "confirmRetryDialog": false,
+        "autoCheck": false,
+        "passPercentage": 100,
+        "showScorePoints": false
+      },
+      "UI": {
+        "checkAnswerButton": "Check",
+        "showSolutionButton": "Show solution",
+        "tryAgainButton": "Retry",
+        "tipsLabel": "Show tip",
+        "scoreBarLabel": "You got :num out of :total points",
+        "tipAvailable": "Tip available",
+        "feedbackAvailable": "Feedback available",
+        "readFeedback": "Read feedback",
+        "wrongAnswer": "Wrong answer",
+        "correctAnswer": "Correct answer",
+        "shouldCheck": "Should have been checked",
+        "shouldNotCheck": "Should not have been checked",
+        "noInput": "Please answer before viewing the solution",
+        "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+        "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+        "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+      },
+      "confirmCheck": {
+        "header": "Finish ?",
+        "body": "Are you sure you wish to finish ?",
+        "cancelLabel": "Cancel",
+        "confirmLabel": "Finish"
+      },
+      "confirmRetry": {
+        "header": "Retry ?",
+        "body": "Are you sure you wish to retry ?",
+        "cancelLabel": "Cancel",
+        "confirmLabel": "Confirm"
+      },
+      "question": "<p>那个是对的？</p>\n"
+    },
+    "library": "H5P.MultiChoice 1.14",
+    "metadata": {
+      "contentType": "Multiple Choice",
+      "license": "U",
+      "title": "Untitled Multiple Choice",
+      "authors": [],
+      "changes": [],
+      "extraTitle": "Untitled Multiple Choice"
+    },
+    "subContentId": "b4885fc8-f347-40f1-bda2-35c614d57b5a"
+  }, {
+    "params": {
+      "media": {
+        "type": {
+          "params": {
+            "contentName": "Image"
+          },
+          "library": "H5P.Image 1.1",
+          "subContentId": "634e5657-7b72-4aa0-a110-d1234d662e9e",
+          "metadata": {
+            "contentType": "Image",
+            "license": "U",
+            "title": "Untitled Image",
+            "authors": [],
+            "changes": [],
+            "extraTitle": "Untitled Image"
+          }
+        },
+        "disableImageZooming": false
+      },
+      "correct": "true",
+      "behaviour": {
+        "enableRetry": true,
+        "enableSolutionsButton": true,
+        "enableCheckButton": true,
+        "confirmCheckDialog": false,
+        "confirmRetryDialog": false,
+        "autoCheck": false
+      },
+      "l10n": {
+        "trueText": "True",
+        "falseText": "False",
+        "score": "You got @score of @total points",
+        "checkAnswer": "Check",
+        "showSolutionButton": "Show solution",
+        "tryAgain": "Retry",
+        "wrongAnswerMessage": "Wrong answer",
+        "correctAnswerMessage": "Correct answer",
+        "scoreBarLabel": "You got :num out of :total points",
+        "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+        "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+        "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+      },
+      "confirmCheck": {
+        "header": "Finish ?",
+        "body": "Are you sure you wish to finish ?",
+        "cancelLabel": "Cancel",
+        "confirmLabel": "Finish"
+      },
+      "confirmRetry": {
+        "header": "Retry ?",
+        "body": "Are you sure you wish to retry ?",
+        "cancelLabel": "Cancel",
+        "confirmLabel": "Confirm"
+      },
+      "question": "<p>这个是对的</p>\n"
+    },
+    "library": "H5P.TrueFalse 1.6",
+    "metadata": {
+      "contentType": "True/False Question",
+      "license": "U",
+      "title": "Untitled True/False Question",
+      "authors": [],
+      "changes": [],
+      "extraTitle": "Untitled True/False Question"
+    },
+    "subContentId": "9a216ed6-0a3d-4e18-bfeb-823fb387d8e2"
+  }],
+  "disableBackwardsNavigation": true,
+  "randomQuestions": false,
+  "endGame": {
+    "showResultPage": false,
+    "showSolutionButton": false,
+    "showRetryButton": false,
+    "noResultMessage": "Finished",
+    "message": "Your result:",
+    "overallFeedback": [{
+      "from": 0,
+      "to": 100
+    }],
+    "solutionButtonText": "Show solution",
+    "retryButtonText": "Retry",
+    "finishButtonText": "Finish",
+    "showAnimations": false,
+    "skippable": false,
+    "skipButtonText": "Skip video"
+  },
+  "override": {
+    "checkButton": true
+  },
+  "texts": {
+    "prevButton": "Previous question",
+    "nextButton": "Next question",
+    "finishButton": "Finish",
+    "textualProgress": "Question: @current of @total questions",
+    "jumpToQuestion": "Question %d of %total",
+    "questionLabel": "Question",
+    "readSpeakerProgress": "Question @current of @total",
+    "unansweredText": "Unanswered",
+    "answeredText": "Answered",
+    "currentQuestionText": "Current question"
+  }
+}
