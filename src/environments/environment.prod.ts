@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'https://kongzone.zhaobg.com',
+  apiUrl: 'https://kzadmin.zhaobg.com',
   production: true,
 };
