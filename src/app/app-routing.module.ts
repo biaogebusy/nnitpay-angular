@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'lists/jobs',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
