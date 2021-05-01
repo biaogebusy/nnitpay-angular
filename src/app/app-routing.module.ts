@@ -4,21 +4,26 @@ import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: 'lists',
-    loadChildren: './node/node-routing.module#NodeRoutingModule',
+    loadChildren: () =>
+      import('./node/node-routing.module').then((m) => m.NodeRoutingModule),
+  },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./user/user-routing.module').then((m) => m.UserRoutingModule),
   },
   {
     path: '**',
-    loadChildren: './page-render/page-routing.module#PageRoutingModule',
+    loadChildren: () =>
+      import('./page-render/page-routing.module').then(
+        (m) => m.PageRoutingModule
+      ),
   },
 ];
 
