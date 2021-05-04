@@ -28,6 +28,7 @@ export class NewsComponent implements OnInit {
       'fields[taxonomy_term--blog_category]=name',
       'fields[taxonomy_term--tags]=name',
       'fields[file--file]=uri',
+      'sort=-changed',
       'jsonapi_include=1',
     ].join('&');
     this.nodeService.getNodes('news', params).subscribe((res) => {
@@ -51,7 +52,7 @@ export class NewsComponent implements OnInit {
           },
           date: item.changed,
           category: item.category.name,
-          body: item.body.value,
+          body: item.body.summary,
           details: {
             label: 'Read More',
             href: link,

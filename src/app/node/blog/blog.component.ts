@@ -17,7 +17,7 @@ export class BlogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Blog list');
+    this.titleService.setTitle('博客文章列表 Blog list');
     this.getBlogs();
   }
   getBlogs(): void {
@@ -28,6 +28,7 @@ export class BlogComponent implements OnInit {
       'fields[taxonomy_term--blog_category]=name',
       'fields[taxonomy_term--tags]=name',
       'fields[file--file]=uri',
+      'sort=-changed',
       'jsonapi_include=1',
     ].join('&');
     this.nodeService.getNodes('blog', params).subscribe((res) => {
@@ -51,7 +52,7 @@ export class BlogComponent implements OnInit {
           },
           date: item.changed,
           category: item.category.name,
-          body: item.body.value,
+          body: item.body.summary,
           details: {
             label: 'Read More',
             href: link,
