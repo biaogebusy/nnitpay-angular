@@ -1,3 +1,8 @@
 .base-text {
   overflow: hidden;
 }
+
+.inner {
+  position: relative;
+  z-index: 2;
+}

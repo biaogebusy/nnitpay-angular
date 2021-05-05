@@ -1,3 +1,7 @@
 .hero-2-v1 {
   overflow: hidden;
+  ::ng-deep .base-text {
+    overflow: visible;
+    position: static;
+  }
 }
