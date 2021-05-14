@@ -4,11 +4,11 @@ import { action, observable, computed } from 'mobx-angular';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../service/api.service';
 import { environment } from '../../environments/environment';
-import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { LocalStorageService } from 'ngx-webstorage';
 import { IApiUrl, IAppConfig, IPage } from './IAppConfig';
 import { Subject } from 'rxjs';
 import { IUser } from './user/IUser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TitleService } from '../service/title.service';
 import { version } from '../../../package.json';
 const unauthUser = {
@@ -36,9 +36,11 @@ export class AppState {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private activateRoute: ActivatedRoute,
     private apiService: ApiService,
     @Inject(DOCUMENT) private document: Document,
-    @Inject(LOCAL_STORAGE) private storage: StorageService,
+    private storage: LocalStorageService,
+
     private titleService: TitleService
   ) {
     this.setConfig();
@@ -113,8 +115,8 @@ export class AppState {
 
   @action
   initTheme(): void {
-    if (this.storage.get(this.MODE)) {
-      this.state.defTheme = this.storage.get(this.MODE);
+    if (this.storage.retrieve(this.MODE)) {
+      this.state.defTheme = this.storage.retrieve(this.MODE);
       this.setBodyClasses(this.state.defTheme);
     } else {
       this.state.defTheme = this.state.config.defaultTheme || 'light-theme';
@@ -134,7 +136,7 @@ export class AppState {
     body.classList.add(theme);
     this.switchChange$.next(theme);
     this.state.defTheme = theme;
-    this.storage.set(this.MODE, theme);
+    this.storage.store(this.MODE, theme);
   }
 
   @action
@@ -143,7 +145,7 @@ export class AppState {
       this.apiService.getToken(this.apiService.localUserKey, 'current_user')
     ) {
       const currentUser = JSON.parse(
-        this.storage.get(this.apiService.localUserKey)
+        this.storage.retrieve(this.apiService.localUserKey)
       );
       this.state.currentUser = currentUser;
     }
@@ -159,38 +161,45 @@ export class AppState {
     this.titleService.setTitle(title);
   }
 
-  setPageNotFound(): void {
-    console.log('404 not found!');
+  setPageNotFound(notFound: string): void {
     this.titleService.setTitle('404 not found!');
-    this.state.page.body[0] = {
-      type: '404',
-    };
+    this.http.get<any>(notFound).subscribe((pageValue: IPage) => {
+      this.updatePage(pageValue, pageValue?.title);
+    });
   }
 
   @action
   setPageContent(): void {
-    const path = this.router.url;
-    // tmp solution
+    const path = this.document.location.pathname;
     if (environment.production) {
       this.http
         .get<any>(`${environment.apiUrl}/api/v1/landingPage?content=${path}`)
         .subscribe(
           (pageValue: IPage) => {
-            this.updatePage(pageValue, pageValue?.title);
+            console.log(pageValue);
+            if (!Array.isArray(pageValue)) {
+              this.updatePage(pageValue, pageValue?.title);
+            } else {
+              this.setPageNotFound(
+                `${environment.apiUrl}/api/v1/landingPage?content=404`
+              );
+            }
           },
           (error) => {
-            this.setPageNotFound();
+            this.setPageNotFound(
+              `${environment.apiUrl}/api/v1/landingPage?content=404`
+            );
           }
         );
     } else {
       this.http
-        .get<any>(`${environment.apiUrl}/assets/app/${path}.json`)
+        .get<any>(`${environment.apiUrl}/assets/app${path}.json`)
         .subscribe(
           (pageValue: IPage) => {
             this.updatePage(pageValue, pageValue?.title);
           },
           (error) => {
-            this.setPageNotFound();
+            this.setPageNotFound(`${environment.apiUrl}/assets/app/404.json`);
           }
         );
     }
