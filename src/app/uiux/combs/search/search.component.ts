@@ -15,16 +15,15 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
 
   onSearch(key: string): void {
-    console.log(key);
     this.loading = true;
     this.nodeService.search(key).subscribe(
       (data) => {
-        console.log(data);
         this.nodes = data.rows.map((item: any) => {
           return {
             link: {
               label: item.title,
               href: item.url,
+              target: '_blank',
             },
             created: item.created,
             body: item.body,
@@ -35,7 +34,6 @@ export class SearchComponent implements OnInit {
       },
       (error) => {
         this.loading = false;
-        console.log(error);
       }
     );
   }
