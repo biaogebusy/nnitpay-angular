@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'https://api.zhaobg.com',
-  production: true
+  apiUrl: 'https://lxy.zhaobg.com',
+  production: true,
 };
