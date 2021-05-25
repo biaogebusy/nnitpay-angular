@@ -17,7 +17,8 @@ export interface IApiUrl {
 }
 
 export interface IPage {
-  meta?: any;
+  meta?: any[];
+  config?: any;
   title: string;
   body: any[];
 }
