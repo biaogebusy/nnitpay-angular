@@ -1,30 +1,66 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
+import {
+  Component,
+  Input,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  startWith,
+} from 'rxjs/operators';
+import { ActivatedRoute, Params } from '@angular/router';
+import { RouteService } from 'src/app/service/route.service';
 
 @Component({
   selector: 'app-search-header',
   templateUrl: './search-header.component.html',
   styleUrls: ['./search-header.component.scss'],
 })
-export class SearchHeaderComponent implements OnInit {
+export class SearchHeaderComponent implements OnInit, AfterViewInit {
   @Input() content: any;
-  searchControl = new FormControl();
+  @Output() searchChange = new EventEmitter();
+  @ViewChild('input') input: ElementRef;
+
   subscribe: Subscription;
   subscription: Subscription;
-  @Output() searchChange = new EventEmitter();
-  constructor() {}
+  key: string;
+  constructor(
+    private router: ActivatedRoute,
+    private routerService: RouteService
+  ) {}
 
   ngOnInit(): void {
-    const $input = this.searchControl.valueChanges.pipe(
+    this.router.queryParams.subscribe((query: any) => {
+      this.key = query.keys;
+      this.searchChange.emit(this.key);
+    });
+  }
+
+  ngAfterViewInit(): void {
+    const input$ = fromEvent<any>(this.input.nativeElement, 'input').pipe(
+      map((event) => event.target.value),
       startWith(''),
       debounceTime(500),
       distinctUntilChanged()
     );
 
-    this.subscription = $input.subscribe((key) => {
-      this.searchChange.emit(key);
+    this.subscription = input$.subscribe((key) => {
+      if (key) {
+        this.searchChange.emit(key);
+        const query: Params = { keys: key };
+        this.routerService.updateQueryParams(query);
+      }
     });
+  }
+
+  onSubmit(key: string): void {
+    this.searchChange.emit(key);
   }
 }
