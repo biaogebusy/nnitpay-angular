@@ -1,38 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { map } from 'lodash-es';
 import { NodeService } from 'src/app/service/node.service';
-import { TagsService } from 'src/app/service/tags.service';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss'],
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.scss'],
 })
-export class NewsComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
+  @Input() content: any;
   loading = true;
-  content: any;
-  constructor(
-    private tagsService: TagsService,
-    private nodeService: NodeService
-  ) {}
+  list: any;
+  constructor(private nodeService: NodeService) {}
 
   ngOnInit(): void {
-    this.tagsService.setTitle('News List');
     this.getNews();
   }
   getNews(): void {
     this.loading = true;
     const params = [
-      'fields[node--news]=title,changed,body,media,field_tags,drupal_internal__nid,path,category',
-      'include=category,field_tags,media,media.field_media_image',
-      'fields[taxonomy_term--blog_category]=name',
-      'fields[taxonomy_term--tags]=name',
+      'fields[node--article]=title,changed,body,drupal_internal__nid,path,article_category,case_cause,content_category,media',
+      'include=article_category,case_cause,content_category,media,media.field_media_image',
+      'fields[taxonomy_term--article_category]=name',
+      'fields[taxonomy_term--case_cause]=name',
+      'fields[taxonomy_term--content_category]=name',
       'fields[file--file]=uri',
       'sort=-changed',
       'jsonapi_include=1',
     ].join('&');
-    this.nodeService.getNodes('news', params).subscribe((res) => {
-      this.content = map(res.data, (item) => {
+    this.nodeService.getNodes('article', params).subscribe((res) => {
+      this.list = map(res.data, (item) => {
         const link = this.nodeService.getNodePath(item);
         return {
           title: {
@@ -46,12 +43,12 @@ export class NewsComponent implements OnInit {
             link,
             ratios: 'media-16-9',
             img: {
-              large: item.media.field_media_image.uri.url,
-              normal: item.media.thumbnail.uri.url,
+              large: item.media?.field_media_image?.uri.url,
+              normal: item.media?.thumbnail?.uri.url,
             },
           },
           date: item.changed,
-          category: item.category.name,
+          category: item.content_category.name,
           body: item.body.summary || item.body.value,
           details: {
             label: 'Read More',
