@@ -1,38 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NodeService } from '../../service/node.service';
 import { map } from 'lodash-es';
-import { TagsService } from 'src/app/service/tags.service';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss'],
+  selector: 'app-blog-list',
+  templateUrl: './blog-list.component.html',
+  styleUrls: ['./blog-list.component.scss'],
 })
-export class BlogComponent implements OnInit {
-  content: any;
+export class BlogListComponent implements OnInit {
+  @Input() content: any;
+  list: any;
   loading = true;
-  constructor(
-    private tagsService: TagsService,
-    private nodeService: NodeService
-  ) {}
+  constructor(private nodeService: NodeService) {}
 
   ngOnInit(): void {
-    this.tagsService.setTitle('博客文章列表 Blog list');
     this.getBlogs();
   }
   getBlogs(): void {
     this.loading = true;
     const params = [
-      'fields[node--blog]=title,changed,body,media,field_tags,drupal_internal__nid,path,category',
       'include=category,field_tags,media,media.field_media_image',
-      'fields[taxonomy_term--blog_category]=name',
-      'fields[taxonomy_term--tags]=name',
-      'fields[file--file]=uri',
       'sort=-changed',
       'jsonapi_include=1',
     ].join('&');
     this.nodeService.getNodes('blog', params).subscribe((res) => {
-      this.content = map(res.data, (item) => {
+      this.list = map(res.data, (item) => {
         const link = this.nodeService.getNodePath(item);
         return {
           title: {

@@ -89,6 +89,12 @@
             "label": "Showcase 3v4",
             "href": "/sample/combs/showcase/showcase3v4"
           }, {
+            "label": "Showcase 3v5",
+            "href": "/sample/combs/showcase/showcase3v5"
+          }, {
+            "label": "Showcase 3v6",
+            "href": "/sample/combs/showcase/showcase3v6"
+          }, {
             "label": "Showcase 4v1",
             "href": "/sample/combs/showcase/showcase4v1"
           }]
@@ -124,6 +130,15 @@
           }, {
             "label": "Blog / News",
             "href": "/sample/node/article"
+          }, {
+            "label": "Blog list",
+            "href": "/sample/list/blog"
+          }, {
+            "label": "News list",
+            "href": "/sample/list/news"
+          }, {
+            "label": "Article list",
+            "href": "/sample/list/articles"
           }]
         }, {
           "label": "Widgets",
