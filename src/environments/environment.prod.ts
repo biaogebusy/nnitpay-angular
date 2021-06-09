@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://nnitadmin.zhaobg.com',
+  apiUrl: 'https://nnitadmin.zhaobg.com',
   production: true,
 };
