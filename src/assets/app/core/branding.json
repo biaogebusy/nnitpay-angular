@@ -77,6 +77,9 @@
             "label": "Showcase 2v1",
             "href": "/sample/combs/showcase/showcase2v1"
           }, {
+            "label": "Showcase 2v2",
+            "href": "/sample/combs/showcase/showcase2v2"
+          }, {
             "label": "Showcase 3v1",
             "href": "/sample/combs/showcase/showcase3v1"
           }, {
@@ -370,7 +373,7 @@
       }
     },
     "footerBottom": {
-      "left": "Copyright ©2021 Powered By Xinshi",
+      "left": "Copyright ©2021 Powered By Xinshi <a href='https://beian.miit.gov.cn/'>桂ICP备2020009081号-1</a>",
       "right": [{
         "label": "首页",
         "href": "/"
