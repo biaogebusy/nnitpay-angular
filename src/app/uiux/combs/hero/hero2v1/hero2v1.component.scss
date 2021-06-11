@@ -1,7 +1,35 @@
+@import "../../../../../theme/variable/breakpoint";
 .hero-2-v1 {
   overflow: hidden;
   ::ng-deep .base-text {
     overflow: visible;
     position: static;
+  }
+  @media #{$lt-md} {
+    min-height: 660px;
+    ::ng-deep {
+      .base-text {
+        .inner {
+          .title {
+            .title-header {
+              font-size: 22px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media #{$lt-sm} {
+    ::ng-deep {
+      .base-text {
+        .inner {
+          .title {
+            .title-header {
+              font-size: 18px !important;
+            }
+          }
+        }
+      }
+    }
   }
 }

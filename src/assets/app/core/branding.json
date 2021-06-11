@@ -77,6 +77,9 @@
             "label": "Showcase 2v1",
             "href": "/sample/combs/showcase/showcase2v1"
           }, {
+            "label": "Showcase 2v2",
+            "href": "/sample/combs/showcase/showcase2v2"
+          }, {
             "label": "Showcase 3v1",
             "href": "/sample/combs/showcase/showcase3v1"
           }, {
@@ -94,6 +97,9 @@
           }, {
             "label": "Showcase 3v6",
             "href": "/sample/combs/showcase/showcase3v6"
+          }, {
+            "label": "Showcase 3v7",
+            "href": "/sample/combs/showcase/showcase3v7"
           }, {
             "label": "Showcase 4v1",
             "href": "/sample/combs/showcase/showcase4v1"
@@ -139,6 +145,9 @@
           }, {
             "label": "Article list",
             "href": "/sample/list/articles"
+          }, {
+            "label": "Taxonomy list",
+            "href": "/sample/list/taxonomy-list"
           }]
         }, {
           "label": "Widgets",
@@ -364,7 +373,7 @@
       }
     },
     "footerBottom": {
-      "left": "Copyright ©2021 Powered By Xinshi",
+      "left": "Copyright ©2021 Powered By Xinshi <a href='https://beian.miit.gov.cn/'>桂ICP备2020009081号-1</a>",
       "right": [{
         "label": "首页",
         "href": "/"
