@@ -1,5 +1,5 @@
 export const environment = {
   apiUrl: 'https://kzadmin.zhaobg.com',
-  ga: 'G-S18EVN8MF9',
+  ga: 'G-N7PGP9ND57',
   production: true,
 };
