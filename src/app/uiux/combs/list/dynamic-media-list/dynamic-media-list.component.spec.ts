@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArticleListComponent } from './article-list.component';
+import { DynamicMediaListComponent } from './dynamic-media-list.component';
 
-describe('ArticleListComponent', () => {
-  let component: ArticleListComponent;
-  let fixture: ComponentFixture<ArticleListComponent>;
+describe('DynamicMediaListComponent', () => {
+  let component: DynamicMediaListComponent;
+  let fixture: ComponentFixture<DynamicMediaListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArticleListComponent ]
+      declarations: [ DynamicMediaListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArticleListComponent);
+    fixture = TestBed.createComponent(DynamicMediaListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
