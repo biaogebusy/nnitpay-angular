@@ -119,6 +119,9 @@
           }, {
             "label": "Carousel 2v1",
             "href": "/sample/combs/carousel/carousel2v1"
+          }, {
+            "label": "Carousel 2v2",
+            "href": "/sample/combs/carousel/carousel2v2"
           }]
         }, {
           "label": "Masonry",
@@ -137,14 +140,8 @@
             "label": "Blog / News",
             "href": "/sample/node/article"
           }, {
-            "label": "Blog list",
-            "href": "/sample/list/blog"
-          }, {
-            "label": "News list",
-            "href": "/sample/list/news"
-          }, {
-            "label": "Article list",
-            "href": "/sample/list/articles"
+            "label": "Dynamic Media List",
+            "href": "/sample/list/dynamic-media-list"
           }, {
             "label": "Taxonomy list",
             "href": "/sample/list/taxonomy-list"

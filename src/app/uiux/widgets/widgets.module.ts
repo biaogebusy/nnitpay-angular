@@ -20,6 +20,9 @@ import { InputComponent } from './input/input.component';
 import { PanelComponent } from './panel/panel.component';
 import { SwiperComponent } from './swiper/swiper.component';
 import { SpacerComponent } from './spacer/spacer.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
+import { MediaListComponent } from './media-list/media-list.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { TextareaComponent } from './textarea/textarea.component';
 import { ChipListComponent } from './chip-list/chip-list.component';
@@ -34,6 +37,7 @@ import { NumberAnimateComponent } from './number-animate/number-animate.componen
 import { DynamicWidgetsComponent } from './dynamic-widgets/dynamic-widgets.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SafeHtmlPipe } from '../../pipe/safe-html.pipe';
+import { IconComponent } from './icon/icon.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -49,6 +53,7 @@ const components = [
   LinkComponent,
   TabComponent,
   CardComponent,
+  IconComponent,
   TitleComponent,
   PanelComponent,
   InputComponent,
@@ -66,6 +71,9 @@ const components = [
   DropdownMenuComponent,
   NumberAnimateComponent,
   DynamicWidgetsComponent,
+  SidebarComponent,
+  MediaListComponent,
+  MenuListComponent,
   PaginationComponent,
   SafeHtmlPipe,
 ];
