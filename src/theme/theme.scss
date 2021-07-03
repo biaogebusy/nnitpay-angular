@@ -23,15 +23,3 @@
   @include base-colors($dark-theme);
   @include component-theme($dark-theme);
 }
-
-.enar-theme {
-  @include angular-material-theme($enar-theme);
-  @include base-colors($enar-theme);
-  @include component-theme($enar-theme);
-}
-
-.king-theme {
-  @include angular-material-theme($king-theme);
-  @include base-colors($king-theme);
-  @include component-theme($king-theme);
-}
