@@ -67,27 +67,21 @@
     }
   }
 
-  .showcase-3-v6 {
-    .key-feature {
-      box-shadow: 0 0 3px rgb(60 72 88 / 15%);
-      .icon {
-        background: linear-gradient(
-          45deg,
-          transparent,
-          mat-color($primary, 0.2)
-        );
-        .mat-icon {
-          color: mat-color($primary);
+  .showcase-3-v8 {
+    .middle {
+      .media {
+        background-color: mat-color($primary, 400);
+        color: mat-color($primary, default-contrast);
+        .sub-title {
+          color: mat-color($primary, default-contrast);
         }
-      }
-      a {
-        color: mat-color($foreground, text, 0.75);
-        &:hover {
-          color: mat-color($primary);
+        a {
+          color: mat-color($primary, default-contrast);
+          &:hover {
+            color: mat-color($primary, default-contrast);
+            opacity: 0.85;
+          }
         }
-      }
-      &:hover {
-        box-shadow: 0 5px 13px mat-color($foreground, divider);
       }
     }
   }
