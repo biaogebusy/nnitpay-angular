@@ -140,8 +140,14 @@
             "label": "Blog / News",
             "href": "/sample/node/article"
           }, {
+            "label": "Profile 1v1",
+            "href": "/sample/combs/profile/profile1v1"
+          }, {
             "label": "Dynamic Media List",
             "href": "/sample/list/dynamic-media-list"
+          }, {
+            "label": "Dynamic Card List",
+            "href": "/sample/list/dynamic-card-list"
           }, {
             "label": "Taxonomy list",
             "href": "/sample/list/taxonomy-list"

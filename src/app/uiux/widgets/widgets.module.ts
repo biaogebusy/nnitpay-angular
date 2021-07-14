@@ -22,22 +22,27 @@ import { SwiperComponent } from './swiper/swiper.component';
 import { SpacerComponent } from './spacer/spacer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
-import { MediaListComponent } from './media-list/media-list.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { TextareaComponent } from './textarea/textarea.component';
 import { ChipListComponent } from './chip-list/chip-list.component';
 import { LineYearComponent } from './line-year/line-year.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { PaginationComponent } from './pagination/pagination.component';
 import { BtnAnimateComponent } from './btn-animate/btn-animate.component';
 import { FeatureBoxComponent } from './feature-box/feature-box.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { NumberAnimateComponent } from './number-animate/number-animate.component';
 import { DynamicWidgetsComponent } from './dynamic-widgets/dynamic-widgets.component';
-import { PaginationComponent } from './pagination/pagination.component';
+
 import { SafeHtmlPipe } from '../../pipe/safe-html.pipe';
 import { IconComponent } from './icon/icon.component';
+import { ProgressGroupComponent } from './progress-group/progress-group.component';
+import { MediaListComponent } from './media/media-list/media-list.component';
+import { MediaObjectComponent } from './media/media-object/media-object.component';
+import { MediaObjectGroupComponent } from './media/media-object-group/media-object-group.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -73,13 +78,16 @@ const components = [
   DynamicWidgetsComponent,
   SidebarComponent,
   MediaListComponent,
+  MediaObjectComponent,
   MenuListComponent,
   PaginationComponent,
+  ProgressBarComponent,
+  ProgressGroupComponent,
   SafeHtmlPipe,
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, MediaObjectGroupComponent],
   imports: [
     MatChipsModule,
     ShareModule,
